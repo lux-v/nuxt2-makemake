@@ -44,10 +44,17 @@ export default {
 	color: var(--color-yellow);
     width: 100%;
 
+    .svg-logo-make-make {
+        width: 150px;
+        height: auto;
+        cursor:pointer;
+    }
+
     .title {
         color: var(--color-yellow);
         text-align: center;
-        font: normal normal normal 18px/22px;
+        font-size: 18px;
+        font-weight: normal;
         letter-spacing: 0px;
     }
 
@@ -57,15 +64,8 @@ export default {
         align-items: center;
         gap:28px;
     }
-
-    .svg-logo-make-make {
-        width: 150px;
-        height: auto;
-        cursor:pointer;
-    }
-
     .svg-logo-rps {
-        color: #000000;
+        color: var(--color-black);
         width: 150px;
         height: auto;
     }
@@ -73,22 +73,17 @@ export default {
     @media only screen and (max-width: 768px) {
         padding: 20px 20px;
         margin-top: 0;
-        background-color: #000000;
+        background-color: var(--color-black);
         
         .svg-logo-make-make {
             width: 100px;
         }
-
         .title{
             font-size:16px;
         }
-
         .svg-logo-rps { 
             display:none;
         }
-
     }
 }
-
-
 </style>

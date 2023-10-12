@@ -1,19 +1,18 @@
 <template>
     <section class="page-detail">
-        <video 
+        <video-stage
             :src="videoUrl"
-            controls 
             class="video"
-        > 
-    The browser does not support videos. 
-  </video> 
+            :autoplay="false"
+        />
+    
     </section>
 </template>
 <script>
 export default {
     data() {
         return {
-          videoUrl:"https://media.geeksforgeeks.org/wp-content/uploads/20210314115545/sample-video.mp4"
+          videoUrl:"https://vimeo.com/278003111"
         }
     },
 }
@@ -26,13 +25,20 @@ export default {
     justify-content: center;
 
     .video{
-        width:60%;
+        position:fixed;
+        top: 200px;
+        bottom: 200px;
+        left: 80px;
+        right: 80px;
     }
 
     // Breakpoint
     @media only screen and (max-width: 768px) {
         .video{
-            width: 80%; 
+            top: 200px;
+            bottom: 200px;
+            left: 20px;
+            right: 20px;
         }
     }
 }

@@ -37,7 +37,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .layout{
-    background-color: #000000;
+    background-color: var(--color-black);
     min-height: var(--unit-100vh);
 
     .header{

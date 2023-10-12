@@ -64,7 +64,7 @@ export default {
 
     .item{
         margin: 30px 0;
-        font: normal normal normal 38px/50px RM Neue;
+        font-size: 38px;
         text-align: center;
     }
 

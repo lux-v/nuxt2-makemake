@@ -2,8 +2,9 @@
     <div :class="classes">
         <div class="items">
             <ul
-                v-for="column in columns"
-                 class="list"
+                v-for="(column, i) in columns"
+                :key="`columnIndex - ${i}`"
+                class="list"
             >
                 <li
                     v-for="(item, i) in column"
@@ -17,16 +18,16 @@
                         @mouseout.native="toggleHover"
                     >
                         <h2
-                            class="name"
+                            class="director-name"
                             v-html="item.title"
                         />
                     </nuxt-link>
 
                     <wp-image
                         v-if="item.image"
-                        class="image"
+                        :image="item.image"
                         mode="fullbleed"
-						:src="item.image.sourceUrl"
+                        class="image"
                     />
                 </li>
             </ul>
@@ -132,9 +133,10 @@ export default {
         }
     }
 
-    .name {
+    .director-name {
         margin: 0;
-        font: normal normal normal 24px/37px RM Neue;
+        font-size: 24px;
+        font-weight: normal;
     }
 
     .image {
@@ -168,7 +170,7 @@ export default {
             margin-top: var(--unit-header-height);
             flex-direction: column;
         }
-        .name{
+        .director-name{
             font-size:16px;
         }
     }
