@@ -6,3 +6,20 @@ html {
 body {
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.header {
+  z-index: 300;
+}
+
+.panel-menu {
+  z-index: 200;
+}
+
+.breadcrumb {
+  z-index: 100;
+}

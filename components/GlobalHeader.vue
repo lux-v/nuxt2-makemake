@@ -8,6 +8,7 @@
 			<svg-logo-rps class="svg-logo-rps" />
 			<global-hamburger
 				:is-open="menuOpened"
+                class="hamburger"
 			/>
         </div> 
 	 </header>
@@ -38,7 +39,7 @@ export default {
 	align-items: center;
 	gap: 20px;
 	margin: 30px 0;
-	padding: 0 50px;
+	padding: 20px 50px;
     box-sizing: border-box;
 	color: var(--color-yellow);
     width: 100%;
@@ -58,22 +59,34 @@ export default {
     }
 
     .svg-logo-make-make {
-        width: 149px;
-        height: 20px;
+        width: 150px;
+        height: auto;
         cursor:pointer;
     }
 
     .svg-logo-rps {
         color: #000000;
-        width: 149px;
-        height: 50px;
+        width: 150px;
+        height: auto;
     }
 
-    @media (max-width: 768px) {
-        .global-header {
-            flex-direction: column;
-            padding: 0 20px;
+    @media only screen and (max-width: 768px) {
+        padding: 20px 20px;
+        margin-top: 0;
+        background-color: #000000;
+        
+        .svg-logo-make-make {
+            width: 100px;
         }
+
+        .title{
+            font-size:16px;
+        }
+
+        .svg-logo-rps { 
+            display:none;
+        }
+
     }
 }
 

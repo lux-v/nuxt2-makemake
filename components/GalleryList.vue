@@ -3,7 +3,7 @@
         <div class="items">
             <ul
                 v-for="column in columns"
-                class="list"
+                 class="list"
             >
                 <li
                     v-for="(item, i) in column"
@@ -123,6 +123,7 @@ export default {
 		text-decoration: none;
 		color: var(--color-yellow);
 		padding: 16px 0;
+        transition: color 0.4s ease-in-out;
     }
 
     &.has-many-items {
@@ -137,16 +138,18 @@ export default {
     }
 
     .image {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        position: fixed;
+        width: 80%;
+        top: 200px;
+        bottom: 200px;
+        left: 50px;
+        right: 50px;
         margin: auto;
         z-index: 10;
         opacity: 0;
         transition: opacity 0.4s ease-in-out;
         pointer-events: none;
+        
     }
 
     // Image Hover state
@@ -154,12 +157,19 @@ export default {
         .list-item:hover .image {
             opacity: 1;
         }
+        .list-item:hover .link{
+            color: white;
+        }
     }
 
     // List Breakpoint
     @media only screen and (max-width: 768px) {
         .items {
+            margin-top: var(--unit-header-height);
             flex-direction: column;
+        }
+        .name{
+            font-size:16px;
         }
     }
 }

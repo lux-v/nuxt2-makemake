@@ -20,7 +20,7 @@ export default {
   css: [
     "~/styles/global.scss",
     "~/styles/variables-css.scss",
-    "~/styles/fonts.scss",
+    "~/styles/fonts.css",
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
