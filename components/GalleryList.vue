@@ -150,25 +150,25 @@ export default {
         z-index: 10;
         opacity: 0;
         transition: opacity 0.4s ease-in-out;
-        pointer-events: none;
-        
+        pointer-events: none;   
     }
 
     // Image Hover state
-    @media (hover: hover) {
+    @media #{$has-hover}{
         .list-item:hover .image {
             opacity: 1;
         }
         .list-item:hover .link{
-            color: white;
+            color: var(--color-white);
         }
     }
 
     // List Breakpoint
-    @media only screen and (max-width: 768px) {
+    @media #{$lt-phone} {
         .items {
             margin-top: var(--unit-header-height);
             flex-direction: column;
+            text-align: center;
         }
         .director-name{
             font-size:16px;

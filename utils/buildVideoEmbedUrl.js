@@ -6,19 +6,19 @@
  * @returns {string}
  */
 function buildVideoEmbedUrl(url = "", options = {}) {
-    let output = url
+  let output = url;
 
-    switch (true) {
-        case isVimeo(url):
-            output = buildVimeoUrl(url, options)
-            break
+  switch (true) {
+    case isVimeo(url):
+      output = buildVimeoUrl(url, options);
+      break;
 
-        case isYouTube(url):
-            output = buildYouTubeUrl(url, options)
-            break
-    }
+    case isYouTube(url):
+      output = buildYouTubeUrl(url, options);
+      break;
+  }
 
-    return output
+  return output;
 }
 
 /**
@@ -30,43 +30,43 @@ function buildVideoEmbedUrl(url = "", options = {}) {
  * @returns {string}
  */
 function buildVimeoUrl(url = "", options = {}) {
-    // Set defaults and merge with provided options
-    let defaults = {
-        byline: 0,
-        portrait: 0,
-        autoplay: 1,
-        color: "ffffff",
-        controls: 1,
-        playsinline: 1,
-        api: 1,
-        dnt: 0,
-        portrait: 0,
-        title: 0,
-        autopause: 1
-    }
-    let parameters = { ...defaults, ...options }
+  // Set defaults and merge with provided options
+  let defaults = {
+    byline: 0,
+    portrait: 0,
+    autoplay: 1,
+    color: "ffffff",
+    controls: 1,
+    playsinline: 1,
+    api: 1,
+    dnt: 0,
+    portrait: 0,
+    title: 0,
+    autopause: 1,
+  };
+  let parameters = { ...defaults, ...options };
 
-    // Parse URL, remove query params, set new player hostname
-    url = new URL(url)
-    url.search = ""
-    url.hostname = "player.vimeo.com"
+  // Parse URL, remove query params, set new player hostname
+  url = new URL(url);
+  url.search = "";
+  url.hostname = "player.vimeo.com";
 
-    // Get Video ID and Privacy Hash from paths
-    let paths = url.pathname.split("/")
-    paths = paths.filter(Boolean)
+  // Get Video ID and Privacy Hash from paths
+  let paths = url.pathname.split("/");
+  paths = paths.filter(Boolean);
 
-    // Set ID
-    url.pathname = `/video/${paths[0] || ""}`
+  // Set ID
+  url.pathname = `/video/${paths[0] || ""}`;
 
-    // Set privacy hash
-    if (paths[1]) {
-        url.searchParams.set("h", paths[1])
-    }
+  // Set privacy hash
+  if (paths[1]) {
+    url.searchParams.set("h", paths[1]);
+  }
 
-    // Add all options as query params to URL
-    url = setUrlParameters(url, parameters)
+  // Add all options as query params to URL
+  url = setUrlParameters(url, parameters);
 
-    return url.toString()
+  return url.toString();
 }
 
 /**
@@ -78,37 +78,37 @@ function buildVimeoUrl(url = "", options = {}) {
  * @returns {string}
  */
 function buildYouTubeUrl(url, options) {
-    // Set defaults and merge with provided options
-    let defaults = {
-        rel: 0,
-        autoplay: 1,
-        color: "ffffff",
-        controls: 1,
-        playsinline: 1,
-        enablejsapi: 1,
-        modestbranding: 1,
-        loop: 0
-    }
-    let parameters = { ...defaults, ...options }
+  // Set defaults and merge with provided options
+  let defaults = {
+    rel: 0,
+    autoplay: 1,
+    color: "ffffff",
+    controls: 1,
+    playsinline: 1,
+    enablejsapi: 1,
+    modestbranding: 1,
+    loop: 0,
+  };
+  let parameters = { ...defaults, ...options };
 
-    // Get YouTube ID
-    const youTubeId = getYouTubeId(url)
+  // Get YouTube ID
+  const youTubeId = getYouTubeId(url);
 
-    // Parse URL, remove any query params
-    url = new URL(url)
-    url.search = ""
+  // Parse URL, remove any query params
+  url = new URL(url);
+  url.search = "";
 
-    // Set ID
-    url.pathname = `/embed/${youTubeId}`
+  // Set ID
+  url.pathname = `/embed/${youTubeId}`;
 
-    // Add all options as query params to URL
-    url = setUrlParameters(url, parameters)
+  // Add all options as query params to URL
+  url = setUrlParameters(url, parameters);
 
-    // Convert short URL
-    url = url.toString()
-    url = url.replace("https://youtu.be/", "https://www.youtube.com/")
+  // Convert short URL
+  url = url.toString();
+  url = url.replace("https://youtu.be/", "https://www.youtube.com/");
 
-    return url
+  return url;
 }
 
 /**
@@ -119,40 +119,40 @@ function buildYouTubeUrl(url, options) {
  * @returns {URL} - A URL interface with updated parameters
  */
 function setUrlParameters(url, parameters = {}) {
-    Object.entries(parameters).forEach((entry) => {
-        const [key, value] = entry
+  Object.entries(parameters).forEach((entry) => {
+    const [key, value] = entry;
 
-        // Cast a true/false to 1/0 to be URL friendly
-        if (typeof value === "boolean") {
-            url.searchParams.set(key, Number(value))
-        } else {
-            url.searchParams.set(key, value)
-        }
-    })
+    // Cast a true/false to 1/0 to be URL friendly
+    if (typeof value === "boolean") {
+      url.searchParams.set(key, Number(value));
+    } else {
+      url.searchParams.set(key, value);
+    }
+  });
 
-    return url
+  return url;
 }
 
 // Tests a URL string for Vimeo
 function isVimeo(url = "") {
-    return String(url).includes("vimeo.com")
+  return String(url).includes("vimeo.com");
 }
 
 // Tests a URL string for YouTube
 function isYouTube(url = "") {
-    return (
-        String(url).includes("youtube.com") || String(url).includes("youtu.be")
-    )
+  return (
+    String(url).includes("youtube.com") || String(url).includes("youtu.be")
+  );
 }
 
 // Gets a YouTube ID from a URL string
 function getYouTubeId(url = "") {
-    // Regex to find the YouTube ID from these:
-    // https://www.youtube.com/watch?v=wSX9F6ETTDQ
-    // https://youtu.be/wSX9F6ETTDQ
-    var regex = /youtu(?:.*\/v\/|.*v\=|\.be\/)([A-Za-z0-9_\-]{11})/
-    const matches = url.match(regex)
-    return matches[1] || ""
+  // Regex to find the YouTube ID from these:
+  // https://www.youtube.com/watch?v=wSX9F6ETTDQ
+  // https://youtu.be/wSX9F6ETTDQ
+  var regex = /youtu(?:.*\/v\/|.*v\=|\.be\/)([A-Za-z0-9_\-]{11})/;
+  const matches = url.match(regex);
+  return matches[1] || "";
 }
 
-export default buildVideoEmbedUrl
+export default buildVideoEmbedUrl;

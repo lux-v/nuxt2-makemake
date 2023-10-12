@@ -21,13 +21,17 @@ export default {
     "~/styles/global.scss",
     "~/styles/variables-css.scss",
     "~/styles/fonts.css",
+    // "~/styles/media-queries.scss",
   ],
+  styleResources: {
+    scss: ["~/styles/media-queries.scss", "~/styles/easings.scss"],
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: ["@nuxtjs/style-resources"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

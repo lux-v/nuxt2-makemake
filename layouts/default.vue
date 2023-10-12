@@ -2,7 +2,7 @@
     <div class="layout">
         <global-header :menu-opened="menuOpened" class="header" />
         <div class="breadcrumb">
-            {{breadcrumb.text}}
+            {{breadcrumbInfo}}
         </div>
         <nuxt class="page"/>
          <global-panel-menu :menu-opened="menuOpened" class="panel-menu"/>
@@ -10,11 +10,11 @@
 </template>
 <script>
 export default {
-    computed: {
-        menuOpened(){
-            return this.$store.state.menuOpened
-        },
-        breadcrumb(){
+    mounted(){
+        this.defineBreadcrumb()
+    },
+    methods:{
+         defineBreadcrumb(){
             let output = {}
             switch (this.$route.name) {
                 case 'index':
@@ -30,9 +30,24 @@ export default {
                 }
                 break;
             }
-            return output
+
+            this.$store.commit("SET_BREADCRUMB", output)
+        }
+    },
+    computed: {
+        menuOpened(){
+            return this.$store.state.menuOpened
+        },
+        breadcrumbInfo(){
+            return this.$store.state.breadcrumb.text 
+        },
+    },
+    watch: {
+        $route (){
+            this.defineBreadcrumb()
         }
     }
+    
 }
 </script>
 <style lang="scss" scoped>
@@ -57,7 +72,7 @@ export default {
     }
 
     // Breakpoint
-    @media only screen and (max-width: 768px) {
+    @media #{$lt-phone} {
         .breadcrumb {
             top: 100px;
             right: 20px;

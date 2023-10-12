@@ -3,7 +3,6 @@
         <video-stage
             :src="videoUrl"
             class="video"
-            :autoplay="false"
         />
     
     </section>
@@ -12,7 +11,7 @@
 export default {
     data() {
         return {
-          videoUrl:"https://vimeo.com/278003111"
+          videoUrl:"https://vimeo.com/538517463"
         }
     },
 }
@@ -33,10 +32,8 @@ export default {
     }
 
     // Breakpoint
-    @media only screen and (max-width: 768px) {
+    @media #{$lt-phone} {
         .video{
-            top: 200px;
-            bottom: 200px;
             left: 20px;
             right: 20px;
         }

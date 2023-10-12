@@ -70,7 +70,11 @@ export default {
         height: auto;
     }
 
-    @media only screen and (max-width: 768px) {
+    .hamburger{
+        padding: 10px;
+    }
+
+    @media #{$lt-phone} {
         padding: 20px 20px;
         margin-top: 0;
         background-color: var(--color-black);
