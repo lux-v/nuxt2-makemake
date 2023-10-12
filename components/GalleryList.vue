@@ -88,7 +88,7 @@ export default {
 <style lang="scss" scoped>
 .gallery-list {
     display: flex;
-    min-height: 100vh;
+    min-height: var(--unit-100vh);
     justify-content: space-between;
     align-items: center;
 	width:100%;
@@ -98,7 +98,6 @@ export default {
         text-align: left;
 		width:100%;
 		justify-content: space-around;
-
     }
 
     .list {
@@ -134,7 +133,7 @@ export default {
 
     .name {
         margin: 0;
-		font-size: 24px;
+        font: normal normal normal 24px/37px RM Neue;
     }
 
     .image {

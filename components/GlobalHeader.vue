@@ -1,19 +1,21 @@
 <template>
 	<header class="global-header">
-		<!-- <svg-logo-make-make class="svg-logo-make-make" /> -->
+        <nuxt-link to="/">
+		<svg-logo-makemake class="svg-logo-make-make" />
+        </nuxt-link>
 		<h2 class="title">Editors </h2>
 		<div class="svg-wrapper">
-			<!-- <svg-logo-rps class="svg-logo-rps" /> -->
+			<svg-logo-rps class="svg-logo-rps" />
 			<global-hamburger
 				:is-open="menuOpened"
 			/>
-		</div>
-	</header>
+        </div> 
+	 </header>
 </template>
 
 <script>
-import SvgLogoMakeMake from "~/assets/svg/logo-makemake.svg"
-import SvgLogoRps from "~/assets/svg/logo-rps.svg"
+import SvgLogoMakemake from '~/assets/svgs/logo-makemake.svg';
+import SvgLogoRps from '~/assets/svgs/logo-rps.svg';
 
 export default {
     props:{
@@ -23,11 +25,11 @@ export default {
         }
     },
     components:{
-        SvgLogoMakeMake,
+        SvgLogoMakemake,
         SvgLogoRps
     }
 }
-</script>
+ </script>
 
 <style lang="scss" scoped>
 .global-header {
@@ -52,11 +54,13 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap:28px;
     }
 
     .svg-logo-make-make {
         width: 149px;
         height: 20px;
+        cursor:pointer;
     }
 
     .svg-logo-rps {

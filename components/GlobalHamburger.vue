@@ -31,33 +31,19 @@ export default {
 
 <style lang="scss" scoped>
 .global-hamburger{
-
   cursor:pointer;
-  
   .line{ 
     height: 2px;
     width: 30px;
     background-color: var(--color-yellow);
     margin-bottom: 10px;
-    transition: rotate 0.3s cubic-bezier(0.075, 0.82, 0.165, 1), translate 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: rotate 0.4s ease, translate 0.4s ease;
 
     &:last-child{
       margin-bottom: 0;
     }
   }
-  
-  &:hover{
-    .line-one{
-      rotate: -45deg;
-      translate: 0 6px;
-    }
-    .line-two{
-      rotate: 45deg;
-      translate: 0 -6px;
-
-    }
-  }
-
+ 
   &.is-open{
     .line-one{
       rotate: -45deg;

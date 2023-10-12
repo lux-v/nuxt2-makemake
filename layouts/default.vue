@@ -2,12 +2,14 @@
     <div class="layout">
         <global-header :menu-opened="menuOpened" class="header"/>
         <nuxt class="page"/>
-        <global-panel-menu :menu-opened="menuOpened" class="panel-menu"/>
-    </div>
+         <global-panel-menu :menu-opened="menuOpened" class="panel-menu"/>
+    </div> 
 </template>
-<script>
 
-export default {
+
+<script>
+ 
+   export default {
     computed: {
         menuOpened(){
             return this.$store.state.menuOpened
@@ -18,7 +20,7 @@ export default {
 <style lang="scss" scoped>
 .layout{
     background-color: #000000;
-    min-height: 100vh;
+    min-height: var(--unit-100vh);
 
     .header{
         position:absolute;

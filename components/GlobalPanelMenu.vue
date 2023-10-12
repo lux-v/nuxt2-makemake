@@ -26,7 +26,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .global-panel-menu{
-    height: 100vh;
+    height: var(--unit-100vh);
     width: 100%;
     translate: 0 100%;
     background-color: firebrick;

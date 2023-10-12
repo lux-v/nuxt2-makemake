@@ -26,7 +26,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .page-detail{
-    height: 100vh;
+    height: var(--unit-100vh);
     display:flex;
     align-items: center;
     justify-content: center;

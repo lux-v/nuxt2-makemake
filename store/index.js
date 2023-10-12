@@ -7,8 +7,6 @@ export const state = () => ({
 // Define mutations
 export const mutations = {
     SET_MENU(state, data) {
-        console.log("in store")
-        console.log("data:" , data)
         state.menuOpened = data
     },
     SET_SITE_META(state, data) {
