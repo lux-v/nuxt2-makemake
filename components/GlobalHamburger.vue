@@ -43,6 +43,12 @@ export default {
       margin-bottom: 0;
     }
   }
+
+  @media #{$has-hover}{
+    &:hover .line{
+      background-color: var(--color-white);
+    }  
+  }
  
   &.is-open{
     .line-one{

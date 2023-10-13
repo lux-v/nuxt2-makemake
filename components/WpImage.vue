@@ -60,95 +60,95 @@ export default {
     props: {
         image: {
             type: Object,
-            default: () => ({})
+            default: () => ({}),
         },
         height: {
             type: Number,
-            default: 0
+            default: 0,
         },
         width: {
             type: Number,
-            default: 0
+            default: 0,
         },
         src: {
             type: String,
-            default: ""
+            default: "",
         },
         srcset: {
             type: String,
-            default: ""
+            default: "",
         },
         sizes: {
             type: String,
-            default: ""
+            default: "",
         },
         alt: {
             type: String,
-            default: ""
+            default: "",
         },
         caption: {
             type: String,
-            default: ""
+            default: "",
         },
         aspectRatio: {
             type: Number,
-            default: 0
+            default: 0,
         },
         objectFit: {
             type: String,
-            default: "cover"
+            default: "cover",
         },
         mode: {
             type: String,
-            default: "intrinsic-ratio"
+            default: "intrinsic-ratio",
         },
         backgroundColor: {
             type: String,
-            default: ""
+            default: "",
         },
         videoUrl: {
             type: String,
-            default: ""
+            default: "",
         },
         loop: {
             type: Boolean,
-            default: true
+            default: true,
         },
         autoplay: {
             type: Boolean,
-            default: true
+            default: true,
         },
         muted: {
             type: Boolean,
-            default: true
+            default: true,
         },
         playsinline: {
             type: Boolean,
-            default: true
+            default: true,
         },
         disablePictureinPicture: {
             type: Boolean,
-            default: true
+            default: true,
         },
         focalPoint: {
             type: Object,
-            default: () => ({})
+            default: () => ({}),
         },
         disabled: {
             type: Boolean,
-            default: false
-        }
+            default: false,
+        },
     },
     data() {
         return {
             loadedStatus: {
-                booted: false
+                booted: false,
             },
             errorStatus: {
                 image: false,
-                video: false
+                video: false,
             },
-            isPlaying: false
+            isPlaying: false,
         }
     },
     computed: {
@@ -166,7 +166,7 @@ export default {
                 { "is-svg": this.isSvg },
                 { "is-video": this.isVideo },
                 { "is-disabled": this.disabled },
-                { "is-playing": this.isPlaying }
+                { "is-playing": this.isPlaying },
             ]
         },
         aspectPadding() {
@@ -258,7 +258,7 @@ export default {
                 y:
                     (this.focalPoint.y, false) ||
                     this.image?.imageMeta?.focalPointY ||
-                    ""
+                    "",
             }
         },
         parsedAlt() {
@@ -305,7 +305,7 @@ export default {
         },
         isVideo() {
             return this.parsedVideoUrl
-        }
+        },
     },
     watch: {
         // Update loaded state if new src set
@@ -328,7 +328,7 @@ export default {
                     this.init()
                 })
             }
-        }
+        },
     },
     mounted() {
         if (!this.disabled) {
@@ -402,8 +402,8 @@ export default {
                 // HTML5 video method
                 this.$refs.video.currentTime = seconds
             }
-        }
-    }
+        },
+    },
 }
 </script>
 

@@ -1,25 +1,25 @@
 html {
-  font-family: var(--font-primary);
-  margin: 0;
+    font-family: var(--font-primary);
+    margin: 0;
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
 a {
-  text-decoration: none;
-  color: var(--color-primary);
+    text-decoration: none;
+    color: var(--color-primary);
 }
 
 .header {
-  z-index: 300;
+    z-index: 300;
 }
 
 .panel-menu {
-  z-index: 200;
+    z-index: 200;
 }
 
 .breadcrumb {
-  z-index: 100;
+    z-index: 100;
 }

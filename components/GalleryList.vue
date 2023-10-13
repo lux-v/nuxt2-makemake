@@ -92,21 +92,19 @@ export default {
     min-height: var(--unit-100vh);
     justify-content: space-between;
     align-items: center;
-	width:100%;
+    width: 100%;
 
     .items {
         display: flex;
         text-align: left;
-		width:100%;
-		justify-content: space-around;
+        width: 100%;
+        justify-content: space-around;
     }
-
     .list {
         list-style: none;
         margin: 0;
         padding: 0;
     }
-
     .list-item {
         white-space: nowrap;
         margin: 16px 0;
@@ -115,15 +113,14 @@ export default {
             margin-bottom: 0;
         }
     }
-
     .link {
         position: relative;
         z-index: 20;
         cursor: pointer;
         display: inline-block;
-		text-decoration: none;
-		color: var(--color-yellow);
-		padding: 16px 0;
+        text-decoration: none;
+        color: var(--color-yellow);
+        padding: 16px 0;
         transition: color 0.4s ease-in-out;
     }
 
@@ -150,15 +147,15 @@ export default {
         z-index: 10;
         opacity: 0;
         transition: opacity 0.4s ease-in-out;
-        pointer-events: none;   
+        pointer-events: none;
     }
 
     // Image Hover state
-    @media #{$has-hover}{
+    @media #{$has-hover} {
         .list-item:hover .image {
             opacity: 1;
         }
-        .list-item:hover .link{
+        .list-item:hover .link {
             color: var(--color-white);
         }
     }
@@ -170,8 +167,8 @@ export default {
             flex-direction: column;
             text-align: center;
         }
-        .director-name{
-            font-size:16px;
+        .director-name {
+            font-size: 16px;
         }
     }
 }
