@@ -44,19 +44,19 @@ export default {
     props: {
         item: {
             type: Object,
-            default: () => ({}),
-        },
+            default: () => ({})
+        }
     },
     computed: {
         classes() {
             return [
                 "wp-menu-item menu-item",
                 {
-                    "is-realtive": this.isRelative,
+                    "is-realtive": this.isRelative
                 },
                 { "has-sub-menu": this.hasSubMenu },
                 { "is-disabled": this.isHash },
-                ...(this.item.cssClasses || ""),
+                ...this.item.cssClasses
             ]
         },
         getChildren() {
@@ -83,26 +83,25 @@ export default {
             return this.item.label == "#"
         },
         isMailTo() {
-            return this.item?.url?.includes("mailto:")
+            return this.item.url.includes("mailto:")
         },
         relativeUrl() {
-            let url = this.item.url || ""
+            let url = this.item.url
             // Replace all these things
             const replaceThese = [
                 this.$store.state.siteMeta.frontendUrl || "",
-                this.$store.state.siteMeta.backendUrl || "",
+                this.$store.state.siteMeta.backendUrl || ""
             ]
             replaceThese.forEach((element) => {
                 url = url.replace(element, "")
             })
             return url
-        },
+        }
     },
     methods: {
         menuInteracted(event) {
-            console.log("aa")
             this.$emit("menu-interacted", event)
-        },
-    },
+        }
+    }
 }
 </script>

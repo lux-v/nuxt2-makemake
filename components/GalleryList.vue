@@ -88,16 +88,19 @@ export default {
 
 <style lang="scss" scoped>
 .gallery-list {
-    display: flex;
     min-height: var(--unit-100vh);
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     .items {
+        width: 100%;
+
         display: flex;
         text-align: left;
-        width: 100%;
+
         justify-content: space-around;
     }
     .list {
@@ -115,13 +118,18 @@ export default {
     }
     .link {
         position: relative;
-        z-index: 20;
-        cursor: pointer;
+
         display: inline-block;
+
+        z-index: 20;
+        padding: 16px 0;
+
         text-decoration: none;
         color: var(--color-yellow);
-        padding: 16px 0;
-        transition: color 0.4s ease-in-out;
+
+        cursor: pointer;
+
+        transition: color 0.4s var(--easing-authentic-motion);
     }
 
     &.has-many-items {
@@ -137,16 +145,20 @@ export default {
     }
 
     .image {
-        position: fixed;
         width: 80%;
+        margin: auto;
+
+        position: fixed;
         top: 200px;
         bottom: 200px;
         left: 50px;
         right: 50px;
-        margin: auto;
+
         z-index: 10;
+
         opacity: 0;
-        transition: opacity 0.4s ease-in-out;
+        transition: opacity 0.4s var(--easing-authentic-motion);
+
         pointer-events: none;
     }
 
@@ -163,8 +175,9 @@ export default {
     // List Breakpoint
     @media #{$lt-phone} {
         .items {
-            margin-top: var(--unit-header-height);
             flex-direction: column;
+            margin-top: var(--unit-header-height);
+
             text-align: center;
         }
         .director-name {

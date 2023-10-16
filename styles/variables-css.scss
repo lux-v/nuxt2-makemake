@@ -7,4 +7,12 @@
 
     --unit-header-height: 130px;
     --unit-100vh: 100vh;
+    --unit-gap: 40px;
+
+    --easing-authentic-motion: cubic-bezier(0.4, 0, 0.2, 1);
+
+    // Breakpoints
+    @media #{$lt-phone} {
+        --unit-gap: 20px;
+    }
 }

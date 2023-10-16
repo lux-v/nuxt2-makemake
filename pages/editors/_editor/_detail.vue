@@ -1,8 +1,8 @@
 <template>
     <section class="page-detail">
         <video-stage
-            :src="videoUrl"
             class="video"
+            :src="videoUrl"
         />
     </section>
 </template>
@@ -18,6 +18,7 @@ export default {
 <style lang="scss" scoped>
 .page-detail {
     height: var(--unit-100vh);
+
     display: flex;
     align-items: center;
     justify-content: center;

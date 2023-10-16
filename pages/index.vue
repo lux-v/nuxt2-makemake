@@ -1,68 +1,71 @@
 <template>
     <section class="page-landing">
-        <gallery-list
-            :items="parsedData"
-            class="list"
+        <h2
+            class="title"
+            v-html="title"
+        />
+        <wp-image
+            class="image"
+            :image="image"
+            mode="cover"
         />
     </section>
 </template>
 
 <script>
+import _kebabCase from "lodash/kebabCase"
+
 export default {
     async asyncData({ store }) {
         try {
-            const res1 = await fetch(
+            const res = await fetch(
                 "https://raw.githubusercontent.com/funkhaus/technical-assessment/master/db.json"
             )
-            const res2 = await fetch(
-                "https://raw.githubusercontent.com/funkhaus/technical-assessment/master/db.json"
-            )
+            const data = await res.json()
 
-            const data1 = await res1.json()
-            const data2 = await res2.json()
-
-            const siteMeta = data2.siteMeta || {}
-            store.commit("SET_SITE_META", siteMeta)
-
+            store.commit("SET_SITE_META", data?.siteMeta || {})
             return {
-                pages: data1.pages || [],
-                siteMeta: siteMeta,
+                title: data.siteMeta?.title || "",
+                image: data.images?.[0] || {},
             }
         } catch (error) {
             console.error(error)
-
             return {
-                pages: [],
+                title: "",
+                image: {},
             }
         }
-    },
-    head() {
-        return {
-            title: this.siteMeta?.title,
-            meta: [
-                {
-                    name: "description",
-                    content: this.siteMeta?.description,
-                },
-                {
-                    name: "thumbnail",
-                    content: this.siteMeta?.thumbnail,
-                },
-            ],
-        }
-    },
-    computed: {
-        parsedData() {
-            return this.pages?.map((page) => {
-                return {
-                    image: page.featuredImage || {},
-                    title: page.title || "",
-                    to: page.uri || "",
-                }
-            })
-        },
     },
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.page-landing {
+    height: 100vh;
+
+    .title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+
+        translate: -50% -50%;
+
+        width: 100%;
+        margin: 0;
+        padding: var(--unit-gap);
+        box-sizing: border-box;
+
+        color: var(--color-yellow);
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .image {
+        z-index: 0;
+
+        width: 100%;
+        height: 100%;
+    }
+}
+</style>

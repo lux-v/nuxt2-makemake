@@ -1,40 +1,41 @@
 <template>
     <div class="layout">
         <global-header
-            :menu-opened="menuOpened"
             class="header"
+            :menu-opened="menuOpened"
+            :breadcrumb="breadcrumb"
         />
-        <div class="breadcrumb">
-            {{ breadcrumbInfo }}
-        </div>
         <nuxt class="page" />
         <global-panel-menu
-            :menu-opened="menuOpened"
             class="panel-menu"
+            :menu-opened="menuOpened"
         />
     </div>
 </template>
 <script>
 export default {
+    head() {
+        return {
+            title: this.$store.state.siteMeta?.title || "",
+            meta: [
+                {
+                    name: "description",
+                    content: this.$store.state.siteMeta?.description || "",
+                },
+                {
+                    name: "thumbnail",
+                    content: this.$store.state.siteMeta?.thumbnail || "",
+                },
+            ],
+        }
+    },
     computed: {
         menuOpened() {
             return this.$store.state.menuOpened
         },
-        breadcrumbInfo() {
-            return this.$store.state.breadcrumb.text
-        },
-    },
-    watch: {
-        $route() {
-            this.defineBreadcrumb()
-        },
-    },
-    mounted() {
-        this.defineBreadcrumb()
-    },
-    methods: {
-        defineBreadcrumb() {
+        breadcrumb() {
             let output = {}
+
             switch (this.$route.name) {
                 case "index":
                     output = {
@@ -43,14 +44,23 @@ export default {
                     }
                     break
 
-                case "detail":
+                case "editors-editor-detail":
                     output = {
-                        text: "Work Detail",
+                        text: "Editors Detail",
+                        to: "",
+                    }
+                    break
+
+                case "editors":
+                    output = {
+                        text: "Editors",
+                        to: "/editors",
                     }
                     break
             }
 
             this.$store.commit("SET_BREADCRUMB", output)
+            return output
         },
     },
 }
@@ -65,23 +75,9 @@ export default {
         top: 0;
         left: 0;
     }
-    .breadcrumb {
-        position: fixed;
-        top: 150px;
-        right: 50px;
-        color: var(--color-yellow);
-    }
     .panel-menu {
         position: fixed;
         bottom: 0;
-    }
-
-    // Breakpoint
-    @media #{$lt-phone} {
-        .breadcrumb {
-            top: 100px;
-            right: 20px;
-        }
     }
 }
 </style>

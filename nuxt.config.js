@@ -24,10 +24,9 @@ export default {
         "~/styles/global.scss",
         "~/styles/variables-css.scss",
         "~/styles/fonts.css",
-        // "~/styles/media-queries.scss",
     ],
     styleResources: {
-        scss: ["~/styles/media-queries.scss", "~/styles/easings.scss"],
+        scss: ["~/styles/media-queries.scss"],
     },
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -58,9 +57,6 @@ export default {
                             "babel-loader",
                             {
                                 loader: "vue-svg-loader",
-                                options: {
-                                    svgo: false,
-                                },
                             },
                         ],
                     },
@@ -73,27 +69,9 @@ export default {
                     {
                         // Default SVG loader.
                         loader: "vue-svg-loader",
-                        options: {
-                            svgo: {
-                                plugins: [{ removeViewBox: false }],
-                            },
-                        },
                     },
                 ],
             })
-        },
-    },
-    html: {
-        minify: {
-            collapseBooleanAttributes: true,
-            decodeEntities: true,
-            minifyCSS: false,
-            minifyJS: false,
-            processConditionalComments: true,
-            removeEmptyAttributes: true,
-            removeRedundantAttributes: true,
-            trimCustomFragments: true,
-            useShortDoctype: true,
         },
     },
 }

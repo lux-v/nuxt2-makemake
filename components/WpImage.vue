@@ -433,7 +433,7 @@ export default {
         top: 0;
         left: 0;
         opacity: 0;
-        transition: opacity 0.4s ease-in-out;
+        transition: opacity 0.4s var(--easing-authentic-motion);
         z-index: 10;
     }
     .media-video {
