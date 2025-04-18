@@ -1,4 +1,4 @@
-# nuxt2-makemake
+ # nuxt2-makemake
 
 ## Build Setup
 
